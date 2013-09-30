@@ -1,7 +1,6 @@
 package examples;
 
-import common.PacketHandler;
-import server.NetServer;
+import socketEngine.ThreadedSocketEngine;
 
 /**
  *
@@ -10,9 +9,8 @@ import server.NetServer;
 public class Server {
     
     public static void main(String[] args) {
-        NetServer server = new NetServer();
-        PacketHandler packetHandler = new PacketHandler(server);
-        RequestHandler requestHandler = new RequestHandler(packetHandler);
+        ThreadedSocketEngine server = new ThreadedSocketEngine();
+        RequestHandler requestHandler = new RequestHandler(server);
         server.startSocketListener(12345);
     }
 }
